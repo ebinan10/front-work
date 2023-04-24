@@ -9,6 +9,6 @@ const ApiContext=({children})=> {
         {children}
   </UserDetailContext.Provider>
   )
-} 
+}    
 
 export default ApiContext; 

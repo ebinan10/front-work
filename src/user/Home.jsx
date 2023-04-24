@@ -3,18 +3,33 @@ import {useState, useEffect, useContext} from 'react';
 import { Link, useLocation,useNavigate } from 'react-router-dom';
 import { UserDetailContext } from '../hooks/ApiContext'; 
 import  UsePrivate from '../hooks/UsePrivate';
-
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import {format} from 'date-fns';
+import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faCalendarDays} from '@fortawesome/free-solid-svg-icons';
 
 const Home = () =>{
-  const usePrivate = UsePrivate()
+  const usePrivate = UsePrivate() 
   
-   const [title,setTitle] = useState('');
+   const [title,setTitle] = useState(''); 
    const [reps,setReps] = useState('');
    const [load,setLoad]= useState('');
    const [data] = useContext(UserDetailContext);
    const [isLogin, setIsLogin] = useState(false);
    const [workout,setWorkout] = useState([]);
-const navigate = useNavigate() 
+   const [date, setDate] = useState([
+    {
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection'
+    }
+    ])
+   const [openDate, setOpenDate] = useState(false)
+   const [startDate, setStartDate] = useState(new Date()); 
+   const navigate = useNavigate() 
    
    useEffect(() => {
 
@@ -62,7 +77,7 @@ const controller = new AbortController()
             const createWorkout =  await usePrivate.post('/',
             {
                 title, reps, load, userId
-            }, {
+            }, {    
               signal: controller.signal
             }
             )
@@ -116,6 +131,15 @@ const controller = new AbortController()
           <input type="number" className='inputWork'  placeholder='Load' 
           required value={load} 
           onChange={(e)=>setLoad(e.target.value)}/>
+          <FontAwesomeIcon icon={faCalendarDays} className="calendarIcon"/>
+        <span onClick={()=>setOpenDate(!openDate)} className="dateSearchText">{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
+            {openDate && <DateRange
+            editableDateInputs={true}
+            onChange={item => setDate([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={date}
+            className="date"
+            /> }
           <input disabled={load ==='' || reps ==='' || title ===''} 
           type="submit" className='buttonHome' onClick={CreateWorkout}/>
           </form>

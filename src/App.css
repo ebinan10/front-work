@@ -65,6 +65,14 @@ background-color: rgb(81, 81, 124);
 .home .description{
   z-index:1;
 }
+.calendarIcon{
+  position: absolute;
+  color:gray;
+}
+.dateSearchText{
+  color: lightgray;
+    cursor: pointer;
+}
 #btn a{
   color:rgb(81, 81, 124);
   background-color: beige;
@@ -165,6 +173,7 @@ section{
 .main{
   align-items: center;
   margin-left: 50px;
+  position: relative;
 }
 .button{
     border: none ;

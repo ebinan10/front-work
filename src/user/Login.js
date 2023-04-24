@@ -46,7 +46,7 @@ function Login() {
                 password
             }) 
             console.log(login)
-            if(login.status===200){
+            if(login.status){
             e.preventDefault()
             console.log(data);
             
