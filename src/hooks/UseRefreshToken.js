@@ -11,7 +11,7 @@ import { UserDetailContext } from './ApiContext'
   const refresh =async () =>{
     let response;
         
-         response =  await Axios.get('refreshtoken')
+         response =  await Axios.get('token')
       console.log(response)
      
         setData(prev=>{  
