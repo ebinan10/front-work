@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-const Url = 'https://workoutbyudehnanaku.onrender.com/'
+const Url = 'https://udehnanakumo.onrender.com/'
 export const UseAxios = axios.create({
   headers: {'Content-Type':'application/json'},
   baseURL: Url,

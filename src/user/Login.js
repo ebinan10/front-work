@@ -40,7 +40,7 @@ function Login() {
         const Login = async(e) =>{
           try{
       e.preventDefault()
-          const login =  await axios.post('https://workoutbyudehnanaku.onrender.com/user/login',
+          const login =  await axios.post('https://udehnanakumo.onrender.com/user/login',
             {
                 email,
                 password

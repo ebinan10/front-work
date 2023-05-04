@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default 
     axios.create({
-  baseURL:'https://workoutbyudehnanaku.onrender.com/',
+  baseURL:'https://udehnanakumo.onrender.com/',
   headers:{
     'Content-Type':'application/json'
 },
